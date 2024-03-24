@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
 
-package pk3;
 
 import java.io.EOFException;
 import java.io.File;
@@ -27,15 +23,15 @@ public class FantasyArchivos {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_GREEN = "\u001B[32m";
-    
+
     static final int PRESUPUESTO_MAX=100;
     static int dineroGastado=0;
     static File ficheroJug= new File("jugadores.obj");
     static ArrayList<Jugador> jugadores=new ArrayList<>();
-    
+
     public static void main(String[] args) {
         int opcion=0;
-        
+
         if (!ficheroJug.exists()) {
             Instalacion.añadirJugadoresArrayInicial();
             Instalacion.guardarJugadores();
@@ -103,7 +99,7 @@ public class FantasyArchivos {
         System.out.println("|4. " + ANSI_GREEN + "Comprar Jugaodor" + ANSI_RESET + "        |");
         System.out.println("|5. " + ANSI_GREEN + "Mostrar Fichados" + ANSI_RESET + "        |");
         System.out.println("|8. Tienes: $" + ANSI_YELLOW+ "NULL" + ANSI_RESET + "           |");
-        System.out.println("|9. " + ANSI_GREEN + "Guardar" + ANSI_RESET + "           |");
+        System.out.println("|9. " + ANSI_GREEN + "Guardar y salir" + ANSI_RESET + "         |");
         System.out.print("|------------(1-9)----------|");
         opcion=sc.nextInt();
         sc.nextLine();
@@ -114,9 +110,10 @@ public class FantasyArchivos {
         String nombre;
         int precio;
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce nombre: ");
+        System.out.println("");
+        System.out.println(ANSI_CYAN +"Introduce nombre: "+ANSI_RESET);
         nombre=sc.nextLine();
-        System.out.println("Introduce el precio: ");
+        System.out.println(ANSI_CYAN +"Introduce el precio: " +ANSI_RESET);
         precio=sc.nextInt();
         sc.nextLine();
         Jugador j=new Jugador(nombre,precio);
@@ -134,13 +131,13 @@ public class FantasyArchivos {
         } catch (IOException ex) {
             Logger.getLogger(FantasyArchivos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     private static void borrarJugador() {
         String nombre;
         Scanner sc= new Scanner(System.in);
-        System.out.println("-------------------------------");
+        System.out.println("");
         System.out.println( ANSI_CYAN +"Introduce el nombre del jugador a borrar: "+ ANSI_CYAN);
         System.out.println("");
         nombre=sc.nextLine();
@@ -148,6 +145,7 @@ public class FantasyArchivos {
             if (jugadores.get(i).getNombre().equals(nombre))
                    jugadores.remove(i);
         }
+        System.out.println( ANSI_GREEN +"Jugador borrado con exito.. "+ ANSI_RESET);
     }
 
     private static void ficharJugador() {
@@ -165,7 +163,7 @@ public class FantasyArchivos {
                         dineroGastado+=jugadores.get(i).getPrecio();
                     } else {
                         System.out.println("|------------------------------------------");
-                        System.out.println("|"+ANSI_RED +"No tienes pasta para fichar a ese tio"+ ANSI_RED);
+                        System.out.println("|"+ANSI_RED +"No tienes saldo suficiente"+ ANSI_RESET);
                         System.out.println("|------------------------------------------");
                     }
             }

@@ -1,6 +1,4 @@
 
-package pk3;
-
 import java.io.Serializable;
 
 
@@ -38,7 +36,7 @@ public class Jugador implements Serializable {
     public void setFichado(boolean fichado) {
         this.fichado = fichado;
     }
-    
+
     public void imprimir () {
         System.out.println(""+nombre+" "+precio);
     }

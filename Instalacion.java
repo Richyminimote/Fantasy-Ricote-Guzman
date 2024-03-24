@@ -1,4 +1,3 @@
-package pk3;
 
 import java.io.EOFException;
 import java.io.File;
@@ -15,10 +14,10 @@ import java.util.logging.Logger;
 
 
 public class Instalacion {
-    
+
     static File ficheroJug = new File("jugadores.obj");
     static ArrayList<Jugador> jugadores=new ArrayList<>();
-    
+
     static void añadirJugadoresArrayInicial() {
         String[] nombres = {"Messi", "Ronaldo", "Neymar", "Mbappé", "Salah", "Lewandowski", "De Bruyne", "Kane", "Suárez", "Hazard", "Mané", "Sterling", "De Jong", "Lloris", "Alisson", "Van Dijk", "Ramos", "Piqué", "Kroos", "Benzema"};
         Random random = new Random();
@@ -27,7 +26,7 @@ public class Instalacion {
             jugadores.add(new Jugador(nombres[i], precio));
         }
     }
-    
+
     static void guardarJugadores() {
         FileOutputStream ff;
         try {
@@ -43,5 +42,5 @@ public class Instalacion {
             Logger.getLogger(FantasyArchivos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }
